@@ -1,97 +1,157 @@
-# Restaurant Website with Feedback Form
+# 🍽 Restaurant Website with Feedback System
 
-A responsive restaurant website that showcases food items and allows users to submit feedback. Built using HTML, CSS, and JavaScript with a Node.js backend and MySQL for storing feedback data.
+A responsive multi-page restaurant website built with **HTML, CSS, JavaScript** for the frontend and **Node.js + MySQL** for the backend feedback system.
+
+---
+
+## 📌 Features
+- **Home Page** – Welcome message, introduction, image gallery
+- **About Page** – Restaurant story and details
+- **Menu Page** – List of dishes with images
+- **Feedback Form** – Collects name, phone, and message, stores in MySQL
+- Fully responsive layout
+
+---
+
+## 📸 Screenshots
+
+### 🏠 Home Page-Header
+![Home Page](public/screenshots/home-header.png)
+
+### 🏠 Home Page-Main
+![Home Page](public/screenshots/home-main.png)
+
+### 📝 Feedback From
+![Home Page](public/screenshots/home-form.png)
+
+### ℹ️ About Page
+![About Page](public/screenshots/about.png)
+
+### 🍽 Menu Page
+![Menu Page](public/screenshots/menu-1.png)
+
+### 🍽 Menu Page
+![Menu Page](public/screenshots/menu-2.png)
+
+### 🍽 Menu Page
+![Menu Page](public/screenshots/menu-3.png)
+
+### 📞 Contact
+![Contact](public/screenshots/contact.png)
+
+---
 
 
-## 🔧 Tech Stack
-**Frontend:** HTML5, CSS3, JavaScript  
-**Backend:** Node.js, Express.js  
-**Database:** MySQL (managed via MySQL Workbench)  
-**Tools:** VS Code, Git, npm, MySQL Workbench
+## 🛠 Tech Stack
 
+**Frontend:**
+- HTML5
+- CSS3  
+  - `indexstyle.css` – Home page styling  
+  - `aboutstyle.css` – About page styling  
+  - `menustyle.css` – Menu page styling  
+- JavaScript (form submission & interactivity)
 
-## 📦 Features
-- Responsive homepage with restaurant and food item sections  
-- Functional feedback form (Name, Phone, Message)  
-- Feedback submitted to the backend using `fetch()`  
-- Data stored in MySQL database securely  
-- Clean file structure and easy to maintain
+**Backend:**
+- Node.js
+- Express.js
+- MySQL
+- MySQL Workbench (for DB design)
 
-## 📁 Folder Structure
+---
+
+## 📂 Folder Structure
 ```bash
 restaurant-website/
-├── db/
-│ └── restaurant_db.sql # Database export (optional)
-├── public/
-│ ├── index.html # Homepage
+│
+├── server/ # Backend code
+│ ├── server.js # Main server file
+│ ├── package.json # Dependencies
+│ ├── db/
+│ │ ├── connection.js # MySQL connection setup
+│ │ └── db.sql # SQL schema file
+│ ├── routes/
+│ │ └── feedback.js # Feedback POST route
+│ └── node_modules/
+│
+├── public/ # Frontend files
+│ ├── index.html # Home page
 │ ├── about.html # About page
-│ ├── menu.html # Food item page
+│ ├── menu.html # Menu page
 │ ├── css/
-│ │ ├── aboutstyle.css 
-│ │ ├── indextyle.css 
-│ │ └── menustyle.css
-│ └── images/ # Image assets
-├── server/
-│ └── server.js # Express backend with MySQL connection
-├── package.json # npm dependencies
-└── README.md # Project documentation
+│ │ ├── indexstyle.css # Styles for home page
+│ │ ├── aboutstyle.css # Styles for about page
+│ │ └── menustyle.css # Styles for menu page
+│ ├── js/
+│ │ └── script.js # Frontend JavaScript
+│ └── images/ # All images
+│
+└── README.md
 ```
 
+---
 
-## 🛠️ Installation Steps
+## ⚙️ Installation & Setup
 
-1. **Clone the repository**
-
+### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/jeevitha28-g/restaurant-website-feedback.git
-cd restaurant-website-feedback
+git clone https://github.com/yourusername/restaurant-website.git
+cd restaurant-website/server
 ```
 
-2. **Install backend dependencies**
+### 2️⃣ Install Dependencies
 ```bash
 npm install
 ```
 
-3. **Set up MySQL database**
--Open MySQL Workbench
--Create the database and table by running:
+### 3️⃣ Create the Database
+
+In MySQL Workbench (or CLI):
 ```bash
-CREATE DATABASE IF NOT EXISTS restaurant_db;
-USE restaurant_db;
+CREATE DATABASE restaurantdb;
+
+USE restaurantdb;
 
 CREATE TABLE feedback (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100),
-    phone VARCHAR(15),
-    message TEXT,
-    submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    name VARCHAR(100) NOT NULL,
+    phone VARCHAR(15) NOT NULL,
+    message TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
 
-5. **Start the server**
+### 4️⃣ Configure MySQL Credentials
+
+Edit :
 ```bash
-node server/server.js
+// server/db/connection.js
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'your_password',
+  database: 'restaurantdb'
+});
 ```
 
-6. **Open in browser**
-Open `public/index.html` directly in your browser or serve it with a static server.
+### 5️⃣ Start the Server
+```bash
+node server.js
+```
 
-## ⚙️ Usage
-- Visit the homepage to learn about the restaurant
-- Navigate to the menu to view food items
-- Fill in the feedback form on the feedback page
-- On submission, the feedback is sent to the backend and stored in MySQL
+### 6️⃣ Open in Browser
 
-## 💡 How It Works (Explanation)
-- `feedback.html` contains a form with input fields for name, phone, and message
-- On submit, JavaScript captures the data and sends it using `fetch()` to `/submit-feedback`
-- `server.js` handles the POST request and inserts the data into the MySQL `feedback` table
-- MySQL Workbench manages your database and can be used to view submitted entries
+Visit:
+```bash
+http://localhost:3000
+```
 
-## License
-This project is for learning and demonstration purposes. You are free to modify and reuse the code.
+---
 
+## 📄 License
+This project is licensed under the MIT License - feel free to use and modify!
 
-## Contact
-Made with ❤️ by Jeevitha (https://github.com/jeevitha28-g)"# restaurant-website" 
-"# restaurant-website" 
+---
+
+## 📞 Contact
+Made with 💙 by [Jeevitha](https://github.com/jeevitha28-g)

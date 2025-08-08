@@ -1,0 +1,10 @@
+CREATE DATABASE restaurant;
+
+USE restaurant;
+
+CREATE TABLE feedback (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  phone VARCHAR(20) NOT NULL,
+  message TEXT NOT NULL
+);
